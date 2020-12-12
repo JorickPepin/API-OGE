@@ -115,7 +115,13 @@ class API():
         categories = []
 
         for cat in catNotes:
-            categorie = Categorie(cat[0])
+            splitCat = cat[0].rsplit(None, 1)
+
+            nomCat = splitCat[0]
+            coefCat = re.sub('[()]', '', splitCat[1])
+
+            categorie = Categorie(nomCat, coefCat)
+            
             notes = re.findall(r"Examen du (.*?)</td><td role=(?:.*?)\">(.*?)<(?:.*?);\">(.*?)</span>/(.*?)  </td>(?:.*?)coef\. (.*?)  </", cat[1], re.DOTALL)
             for n in notes:
                 categorie.ajouterNote(n[0], n[1], n[2], n[3], n[4])

@@ -9,8 +9,9 @@ class Note():
         self.coef = float(coef)
 
 class Categorie():
-    def __init__(self, nom):
+    def __init__(self, nom, coef):
         self.nom = nom
+        self.coef = coef
         self.notes = []
 
     def ajouterNote(self, date, intitule, note, total, coef):
@@ -18,7 +19,7 @@ class Categorie():
 
 class Matiere():
     def __init__(self, id, nom, nbNote, viewState):
-        self.id = id;
+        self.id = id
         self.nom = nom
         try:
             self.nbNote = (0 if nbNote=="" else int(nbNote))
